@@ -23,6 +23,8 @@ while (true)
                 Console.WriteLine("1. Check clock status");
                 Console.WriteLine("2. Clock in");
                 Console.WriteLine("3. Clock out");
+                Console.WriteLine("4. Clock stats");
+                Console.WriteLine("5. Exit");
                 Console.WriteLine("Please select an option");
 
                 string employeeMenu = Console.ReadLine() ?? string.Empty;
@@ -40,6 +42,9 @@ while (true)
                         it1.employeeList[i].ClockOut();
                         break;
                     case 4:
+                        it1.employeeList[i].CheckClockStats();
+                        break;
+                    case 5:
                         userExitCondition = false;
                         break;
                     default:
@@ -59,6 +64,9 @@ while (true)
             Console.WriteLine("1. Check clock status");
             Console.WriteLine("2. Clock in");
             Console.WriteLine("3. Clock out");
+            Console.WriteLine("4. Check clock stats");
+            Console.WriteLine("5. Exit");
+            //Console.WriteLine("");
             Console.WriteLine("Please select an option");
 
             string managerMenu = Console.ReadLine() ?? string.Empty;
@@ -76,6 +84,9 @@ while (true)
                     it1.managerList[i].ClockOut();
                     break;
                 case 4:
+                    it1.managerList[i].CheckClockStats();
+                    break;
+                case 5:
                     userExitCondition = false;
                     break;
                 default:
@@ -94,6 +105,9 @@ while (true)
             Console.WriteLine("1. Check clock status");
             Console.WriteLine("2. Clock in");
             Console.WriteLine("3. Clock out");
+            Console.WriteLine("4. Check clock stats");
+            Console.WriteLine("5. Exit");
+            //Console.WriteLine("");
             Console.WriteLine("Please select an option");
 
             string leaderMenu = Console.ReadLine() ?? string.Empty;
@@ -111,6 +125,9 @@ while (true)
                     it1.leaderList[i].ClockOut();
                     break;
                 case 4:
+                    it1.leaderList[i].CheckClockStats();
+                    break;
+                case 5:
                     userExitCondition = false;
                     break;
                 default:
@@ -129,6 +146,8 @@ while (true)
             Console.WriteLine("1. Check clock status");
             Console.WriteLine("2. Clock in");
             Console.WriteLine("3. Clock out");
+            Console.WriteLine("4. Check clock stats");
+            Console.WriteLine("5. Exit");
             Console.WriteLine("Please select an option");
 
             string adminMenu = Console.ReadLine() ?? string.Empty;
@@ -146,6 +165,9 @@ while (true)
                     it1.adminList[i].ClockOut();
                     break;
                 case 4:
+                    it1.adminList[i].CheckClockStats();
+                    break;
+                case 5:
                     userExitCondition = false;
                     break;
                 default:
@@ -164,6 +186,8 @@ while (true)
             Console.WriteLine("1. Check clock status");
             Console.WriteLine("2. Clock in");
             Console.WriteLine("3. Clock out");
+            Console.WriteLine("4. Check clock stats");
+            Console.WriteLine("5. Exit");
             Console.WriteLine("Please select an option");
 
             string techMenu = Console.ReadLine() ?? string.Empty;
@@ -181,6 +205,9 @@ while (true)
                     techList[i].ClockOut();
                     break;
                 case 4:
+                    techList[i].CheckClockStats();
+                    break;
+                case 5:
                     userExitCondition = false;
                     break;
                 default:
