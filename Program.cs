@@ -3,6 +3,30 @@ using EmployeeObj;
 ITTech it1 = new ITTech(-1, "jew",castRole.corporate);
 ITTech[] techList = { it1 };
 
+//Function to make sure user input integer value for switch menu select
+static int SwitchInputErrorCheck()
+{
+    bool inputValidiation = true;
+    while(inputValidiation)
+    {
+    string menuSelection = Console.ReadLine() ?? string.Empty;
+        int menuSelectionNum;
+        bool menuSelectionVerification = int.TryParse(menuSelection, out menuSelectionNum);
+
+        if(menuSelectionVerification)
+        {
+            return menuSelectionNum;
+            inputValidiation = false;
+        }
+        else
+        {
+            Console.WriteLine("Please select valid option.");
+            return 0;
+        }
+    }
+    return 0;
+}
+
 while (true)
 { 
     bool userExitCondition = true;
@@ -37,8 +61,7 @@ while (true)
                     Console.WriteLine("5. Exit");
                     Console.WriteLine("Please select an option");
 
-                    string employeeMenu = Console.ReadLine() ?? string.Empty;
-                    int employeeMenuNum = Convert.ToInt16(employeeMenu);
+                    int employeeMenuNum = SwitchInputErrorCheck();
 
                     switch (employeeMenuNum)
                     {
@@ -58,7 +81,7 @@ while (true)
                             userExitCondition = false;
                             break;
                         default:
-                            Console.WriteLine("Please select a valid option.");
+                            //Console.WriteLine("Please select a valid option.");
                             break;
 
                     }
@@ -80,8 +103,8 @@ while (true)
                 //Console.WriteLine("");
                 Console.WriteLine("Please select an option");
 
-                string managerMenu = Console.ReadLine() ?? string.Empty;
-                int managerMenuNum = Convert.ToInt16(managerMenu);
+                int managerMenuNum = SwitchInputErrorCheck();
+                
 
                 switch (managerMenuNum)
                 {
@@ -104,7 +127,7 @@ while (true)
                         userExitCondition = false;
                         break;
                     default:
-                        Console.WriteLine("Please select a valid option.");
+                        //Console.WriteLine("Please select a valid option.");
                         break;
 
                 }
@@ -125,8 +148,7 @@ while (true)
                 //Console.WriteLine("");
                 Console.WriteLine("Please select an option");
 
-                string leaderMenu = Console.ReadLine() ?? string.Empty;
-                int leaderMenuNum = Convert.ToInt16(leaderMenu);
+                int leaderMenuNum = SwitchInputErrorCheck();
 
                 switch (leaderMenuNum)
                 {
@@ -150,7 +172,7 @@ while (true)
                         userExitCondition = false;
                         break;
                     default:
-                        Console.WriteLine("Please select a valid option.");
+                        //Console.WriteLine("Please select a valid option.");
                         break;
 
                 }
@@ -171,8 +193,7 @@ while (true)
                 //Console.WriteLine("");
                 Console.WriteLine("Please select an option");
 
-                string adminMenu = Console.ReadLine() ?? string.Empty;
-                int adminMenuNum = Convert.ToInt16(adminMenu);
+                int adminMenuNum = SwitchInputErrorCheck();
 
                 switch (adminMenuNum)
                 {
@@ -197,7 +218,7 @@ while (true)
                         userExitCondition = false;
                         break;
                     default:
-                        Console.WriteLine("Please select a valid option.");
+                        //Console.WriteLine("Please select a valid option.");
                         break;
 
                 }
@@ -216,8 +237,7 @@ while (true)
                 Console.WriteLine("5. Exit");
                 Console.WriteLine("Please select an option");
 
-                string techMenu = Console.ReadLine() ?? string.Empty;
-                int techMenuNum = Convert.ToInt16(techMenu);
+                int techMenuNum = SwitchInputErrorCheck();
 
                 switch (techMenuNum)
                 {
@@ -243,7 +263,7 @@ while (true)
                         userExitCondition = false;
                         break;
                     default:
-                        Console.WriteLine("Please select a valid option.");
+                        //Console.WriteLine("Please select a valid option.");
                         break;
 
                 }
