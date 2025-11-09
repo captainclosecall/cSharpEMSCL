@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using EmployeeObj;
 using cSharpEMSCL;
-ITTech it1 = new ITTech(-1, "jew",castRole.corporate);
+ITTech it1 = new ITTech(-2, "jew",castRole.corporate);
 ITTech[] techList = { it1 };
 
 while (true)
@@ -68,42 +68,45 @@ while (true)
         {
             if (employeeNum == it1.managerList[i].mId)
             {
-                Console.WriteLine($"Welcome {it1.managerList[i].mName}!");
-                Console.WriteLine("1. Check clock status");
-                Console.WriteLine("2. Clock in");
-                Console.WriteLine("3. Clock out");
-                Console.WriteLine("4. Check clock stats");
-                Console.WriteLine("5. List members");
-                Console.WriteLine("6. Exit");
-                //Console.WriteLine("");
-                Console.WriteLine("Please select an option");
-
-                int managerMenuNum = EMSutilies.SwitchInputErrorCheck();
-                
-
-                switch (managerMenuNum)
+                while (userExitCondition)
                 {
-                    case 1:
-                        it1.managerList[i].CheckClockStatus();
-                        break;
-                    case 2:
-                        it1.managerList[i].ClockIn();
-                        break;
-                    case 3:
-                        it1.managerList[i].ClockOut();
-                        break;
-                    case 4:
-                        it1.managerList[i].CheckClockStats();
-                        break;
-                    case 5:
-                        it1.managerList[i].ListEmployees(it1.employeeList);
-                        break;
-                    case 6:
-                        userExitCondition = false;
-                        break;
-                    default:
-                        //Console.WriteLine("Please select a valid option.");
-                        break;
+                    Console.WriteLine($"Welcome {it1.managerList[i].mName}!");
+                    Console.WriteLine("1. Check clock status");
+                    Console.WriteLine("2. Clock in");
+                    Console.WriteLine("3. Clock out");
+                    Console.WriteLine("4. Check clock stats");
+                    Console.WriteLine("5. List members");
+                    Console.WriteLine("6. Exit");
+                    //Console.WriteLine("");
+                    Console.WriteLine("Please select an option");
+
+                    int managerMenuNum = EMSutilies.SwitchInputErrorCheck();
+
+
+                    switch (managerMenuNum)
+                    {
+                        case 1:
+                            it1.managerList[i].CheckClockStatus();
+                            break;
+                        case 2:
+                            it1.managerList[i].ClockIn();
+                            break;
+                        case 3:
+                            it1.managerList[i].ClockOut();
+                            break;
+                        case 4:
+                            it1.managerList[i].CheckClockStats();
+                            break;
+                        case 5:
+                            it1.managerList[i].ListEmployees(it1.employeeList);
+                            break;
+                        case 6:
+                            userExitCondition = false;
+                            break;
+                        default:
+                            //Console.WriteLine("Please select a valid option.");
+                            break;
+                    }
                 }
             }
         }
@@ -124,30 +127,33 @@ while (true)
 
                 int leaderMenuNum = EMSutilies.SwitchInputErrorCheck();
 
-                switch (leaderMenuNum)
+                while (userExitCondition)
                 {
-                    case 1:
-                        it1.leaderList[i].CheckClockStatus();
-                        break;
-                    case 2:
-                        it1.leaderList[i].ClockIn();
-                        break;
-                    case 3:
-                        it1.leaderList[i].ClockOut();
-                        break;
-                    case 4:
-                        it1.leaderList[i].CheckClockStats();
-                        break;
-                    case 5:
-                        it1.leaderList[i].ListEmployees(it1.employeeList);
-                        it1.leaderList[i].ListEmployees(it1.managerList);
-                        break;
-                    case 6:
-                        userExitCondition = false;
-                        break;
-                    default:
-                        //Console.WriteLine("Please select a valid option.");
-                        break;
+                    switch (leaderMenuNum)
+                    {
+                        case 1:
+                            it1.leaderList[i].CheckClockStatus();
+                            break;
+                        case 2:
+                            it1.leaderList[i].ClockIn();
+                            break;
+                        case 3:
+                            it1.leaderList[i].ClockOut();
+                            break;
+                        case 4:
+                            it1.leaderList[i].CheckClockStats();
+                            break;
+                        case 5:
+                            it1.leaderList[i].ListEmployees(it1.employeeList);
+                            it1.leaderList[i].ListEmployees(it1.managerList);
+                            break;
+                        case 6:
+                            userExitCondition = false;
+                            break;
+                        default:
+                            //Console.WriteLine("Please select a valid option.");
+                            break;
+                    }
                 }
             }
         }
@@ -156,47 +162,50 @@ while (true)
         {
             if (employeeNum == it1.adminList[i].mId)
             {
-                Console.WriteLine($"Welcome {it1.adminList[i].mName}!");
-                Console.WriteLine("1. Check clock status");
-                Console.WriteLine("2. Clock in");
-                Console.WriteLine("3. Clock out");
-                Console.WriteLine("4. Check clock stats");
-                Console.WriteLine("5. List members");
-                Console.WriteLine("6. Create members");
-                Console.WriteLine("7. Exit");
-                Console.WriteLine("Please select an option");
-                //Console.WriteLine("");
-
-                int adminMenuNum = EMSutilies.SwitchInputErrorCheck();
-
-                switch (adminMenuNum)
+                while (userExitCondition)
                 {
-                    case 1:
-                        it1.adminList[i].CheckClockStatus();
-                        break;
-                    case 2:
-                        it1.adminList[i].ClockIn();
-                        break;
-                    case 3:
-                        it1.adminList[i].ClockOut();
-                        break;
-                    case 4:
-                        it1.adminList[i].CheckClockStats();
-                        break;
-                    case 5:
-                        it1.adminList[i].ListEmployees(it1.employeeList);
-                        it1.adminList[i].ListEmployees(it1.managerList);
-                        it1.adminList[i].ListEmployees(it1.leaderList);
-                        break;
-                    case 6:
-                        it1.adminList[i].CreateCast();
-                        break;
-                    case 7:
-                        userExitCondition = false;
-                        break;
-                    default:
-                        //Console.WriteLine("Please select a valid option.");
-                        break;
+                    Console.WriteLine($"Welcome {it1.adminList[i].mName}!");
+                    Console.WriteLine("1. Check clock status");
+                    Console.WriteLine("2. Clock in");
+                    Console.WriteLine("3. Clock out");
+                    Console.WriteLine("4. Check clock stats");
+                    Console.WriteLine("5. List members");
+                    Console.WriteLine("6. Create members");
+                    Console.WriteLine("7. Exit");
+                    Console.WriteLine("Please select an option");
+                    //Console.WriteLine("");
+
+                    int adminMenuNum = EMSutilies.SwitchInputErrorCheck();
+
+                    switch (adminMenuNum)
+                    {
+                        case 1:
+                            it1.adminList[i].CheckClockStatus();
+                            break;
+                        case 2:
+                            it1.adminList[i].ClockIn();
+                            break;
+                        case 3:
+                            it1.adminList[i].ClockOut();
+                            break;
+                        case 4:
+                            it1.adminList[i].CheckClockStats();
+                            break;
+                        case 5:
+                            it1.adminList[i].ListEmployees(it1.employeeList);
+                            it1.adminList[i].ListEmployees(it1.managerList);
+                            it1.adminList[i].ListEmployees(it1.leaderList);
+                            break;
+                        case 6:
+                            it1.adminList[i].CreateCast(ref it1.employeeList, ref it1.managerList,ref it1.leaderList);
+                            break;
+                        case 7:
+                            userExitCondition = false;
+                            break;
+                        default:
+                            //Console.WriteLine("Please select a valid option.");
+                            break;
+                    }
                 }
             }
         }
@@ -205,44 +214,47 @@ while (true)
         {
             if (employeeNum == techList[i].mId)
             {
-                Console.WriteLine($"Welcome {techList[i].mName}!");
-                Console.WriteLine("1. Check clock status");
-                Console.WriteLine("2. Clock in");
-                Console.WriteLine("3. Clock out");
-                Console.WriteLine("4. Check clock stats");
-                Console.WriteLine("5. List members");
-                Console.WriteLine("6. Exit");
-                Console.WriteLine("Please select an option");
-                //Console.WriteLine("");
-
-                int techMenuNum = EMSutilies.SwitchInputErrorCheck();
-
-                switch (techMenuNum)
+                while (userExitCondition)
                 {
-                    case 1:
-                        techList[i].CheckClockStatus();
-                        break;
-                    case 2:
-                        techList[i].ClockIn();
-                        break;
-                    case 3:
-                        techList[i].ClockOut();
-                        break;
-                    case 4:
-                        techList[i].CheckClockStats();
-                        break;
-                    case 5:
-                        techList[i].ListEmployees(it1.employeeList);
-                        techList[i].ListEmployees(it1.managerList);
-                        techList[i].ListEmployees(it1.leaderList);
-                        techList[i].ListEmployees(it1.adminList);
-                        break;
-                    case 6:
-                        userExitCondition = false;
-                        break;
-                    default:
-                        //Console.WriteLine("Please select a valid option.");
-                        break;
+                    Console.WriteLine($"Welcome {techList[i].mName}!");
+                    Console.WriteLine("1. Check clock status");
+                    Console.WriteLine("2. Clock in");
+                    Console.WriteLine("3. Clock out");
+                    Console.WriteLine("4. Check clock stats");
+                    Console.WriteLine("5. List members");
+                    Console.WriteLine("6. Exit");
+                    Console.WriteLine("Please select an option");
+                    //Console.WriteLine("");
+
+                    int techMenuNum = EMSutilies.SwitchInputErrorCheck();
+
+                    switch (techMenuNum)
+                    {
+                        case 1:
+                            techList[i].CheckClockStatus();
+                            break;
+                        case 2:
+                            techList[i].ClockIn();
+                            break;
+                        case 3:
+                            techList[i].ClockOut();
+                            break;
+                        case 4:
+                            techList[i].CheckClockStats();
+                            break;
+                        case 5:
+                            techList[i].ListEmployees(it1.employeeList);
+                            techList[i].ListEmployees(it1.managerList);
+                            techList[i].ListEmployees(it1.leaderList);
+                            techList[i].ListEmployees(it1.adminList);
+                            break;
+                        case 6:
+                            userExitCondition = false;
+                            break;
+                        default:
+                            //Console.WriteLine("Please select a valid option.");
+                            break;
+                    }
                 }
             }
         }

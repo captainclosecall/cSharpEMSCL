@@ -15,11 +15,11 @@ namespace EmployeeObj
         internal Administrator(int id,string name, castRole role) : base(id,name,role) { }
 
         //Methods
-        public void CreateCast()
+        public void CreateCast(ref List<Employee> emp, ref List<Manager> mg, ref List<Leader> lead)
         {
             bool castCreationValidation = true;
             castRole roleAssignment = castRole.noRole;
-            int idAssign = employeeList.Count + managerList.Count + leaderList.Count;
+            int idAssign = emp.Count + mg.Count + lead.Count +1;
             string castName = "";
 
             while (castCreationValidation)
@@ -84,15 +84,15 @@ namespace EmployeeObj
                     switch (castRankNum)
                     {
                         case 1:
-                            employeeList.Add(new Employee(idAssign, castName, roleAssignment));
+                            emp.Add(new Employee(idAssign, castName, roleAssignment));
                             castCreationValidation = false;
                             break;
                         case 2:
-                            employeeList.Add(new Manager(idAssign, castName, roleAssignment));
+                            mg.Add(new Manager(idAssign, castName, roleAssignment));
                             castCreationValidation = false;
                             break;
                         case 3:
-                            employeeList.Add(new Leader(idAssign, castName, roleAssignment));
+                            lead.Add(new Leader(idAssign, castName, roleAssignment));
                             castCreationValidation = false;
                             break;
                     default:
