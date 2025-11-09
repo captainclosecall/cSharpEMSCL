@@ -22,7 +22,7 @@ namespace EmployeeObj
             foreach(var member in castList)
             {
                 int i = 1;
-                Console.WriteLine($"{i++}- Name:{member.mName} ID: {member.mId} Role: {member.jobTitle}");
+                Console.WriteLine($"{i++}- Name:{member.mName} ID: {member.mId} Role: {member.mJobTitle}");
             }
         }
     }

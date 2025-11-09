@@ -4,8 +4,6 @@ using cSharpEMSCL;
 ITTech it1 = new ITTech(-1, "jew",castRole.corporate);
 ITTech[] techList = { it1 };
 
-//Function to make sure user input integer value for switch menu select
-
 while (true)
 { 
     bool userExitCondition = true;
@@ -24,7 +22,6 @@ while (true)
 
     if (validateInput || employeeInput.Length > 0)
     {
-
         for (int i = 0; i < it1.employeeList.Count; i++)
         {
             if (employeeNum == it1.employeeList[i].mId)
@@ -62,7 +59,6 @@ while (true)
                         default:
                             //Console.WriteLine("Please select a valid option.");
                             break;
-
                     }
                 }
             }
@@ -108,7 +104,6 @@ while (true)
                     default:
                         //Console.WriteLine("Please select a valid option.");
                         break;
-
                 }
             }
         }
@@ -153,7 +148,6 @@ while (true)
                     default:
                         //Console.WriteLine("Please select a valid option.");
                         break;
-
                 }
             }
         }
@@ -168,9 +162,10 @@ while (true)
                 Console.WriteLine("3. Clock out");
                 Console.WriteLine("4. Check clock stats");
                 Console.WriteLine("5. List members");
-                Console.WriteLine("6. Exit");
-                //Console.WriteLine("");
+                Console.WriteLine("6. Create members");
+                Console.WriteLine("7. Exit");
                 Console.WriteLine("Please select an option");
+                //Console.WriteLine("");
 
                 int adminMenuNum = EMSutilies.SwitchInputErrorCheck();
 
@@ -194,12 +189,14 @@ while (true)
                         it1.adminList[i].ListEmployees(it1.leaderList);
                         break;
                     case 6:
+                        it1.adminList[i].CreateCast();
+                        break;
+                    case 7:
                         userExitCondition = false;
                         break;
                     default:
                         //Console.WriteLine("Please select a valid option.");
                         break;
-
                 }
             }
         }
@@ -213,8 +210,10 @@ while (true)
                 Console.WriteLine("2. Clock in");
                 Console.WriteLine("3. Clock out");
                 Console.WriteLine("4. Check clock stats");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. List members");
+                Console.WriteLine("6. Exit");
                 Console.WriteLine("Please select an option");
+                //Console.WriteLine("");
 
                 int techMenuNum = EMSutilies.SwitchInputErrorCheck();
 
@@ -244,12 +243,8 @@ while (true)
                     default:
                         //Console.WriteLine("Please select a valid option.");
                         break;
-
                 }
             }
         }
     }
-
-
-
 }

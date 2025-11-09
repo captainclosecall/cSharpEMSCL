@@ -22,7 +22,7 @@ namespace EmployeeObj
         internal int mId { get;private set; }
         internal string mName { get;private set; }
         internal bool clockStatus { get; private set; }
-        internal castRole jobTitle { get; private set; }
+        internal castRole mJobTitle { get; private set; }
         internal List<DateTime> clockInHistory = new List<DateTime> { };
         internal List<DateTime> clockOutHistory = new List<DateTime> { };
 
@@ -31,7 +31,7 @@ namespace EmployeeObj
         {
             mId = id;
             mName = name;
-            jobTitle = role;
+            mJobTitle = role;
         }
 
         //Methods

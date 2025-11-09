@@ -8,6 +8,8 @@ namespace cSharpEMSCL
 {
     internal struct EMSutilies
     {
+
+        //Function to make sure user input integer value for switch menu select
         internal static int SwitchInputErrorCheck()
         {
             bool inputValidiation = true;
