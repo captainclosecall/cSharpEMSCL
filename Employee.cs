@@ -6,20 +6,32 @@ using System.Threading.Tasks;
 
 namespace EmployeeObj
 {
+    enum castRole
+    {
+        noRole,
+        merchandise,
+        foodAndBeverage,
+        HouseKeeping,
+        photoPass,
+        corporate
+
+    }
     internal class Employee
     {
         //Fields
         internal int mId { get;private set; }
         internal string mName { get;private set; }
         internal bool clockStatus { get; private set; }
+        internal castRole jobTitle { get; private set; }
         internal List<DateTime> clockInHistory = new List<DateTime> { };
         internal List<DateTime> clockOutHistory = new List<DateTime> { };
 
         //Constructor
-        public Employee(int id, string name)
+        public Employee(int id, string name, castRole role)
         {
             mId = id;
             mName = name;
+            jobTitle = role;
         }
 
         //Methods

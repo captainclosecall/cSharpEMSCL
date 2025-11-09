@@ -9,10 +9,10 @@ namespace EmployeeObj
     internal class Manager : Employee
     {
         //Fields
-        internal Employee[] employeeList = {new Employee(1,"J") };
+        internal Employee[] employeeList = {new Employee(1,"J",castRole.foodAndBeverage) };
 
         //Constructor
-        internal Manager(int id, string name) : base(id, name) { }
+        internal Manager(int id, string name, castRole role) : base(id, name,role) { }
        
         //Methods
 

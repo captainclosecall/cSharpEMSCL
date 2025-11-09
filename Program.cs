@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using EmployeeObj;
-ITTech it1 = new ITTech(-1, "jew");
+ITTech it1 = new ITTech(-1, "jew",castRole.corporate);
 ITTech[] techList = { it1 };
 
 while (true)

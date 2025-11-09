@@ -9,8 +9,8 @@ namespace EmployeeObj
     internal class ITTech : Administrator
     {
         //Fields
-        internal Administrator[] adminList = { new Administrator(4, "Jayleen Wilson") };
+        internal Administrator[] adminList = { new Administrator(4, "Jayleen Wilson", castRole.photoPass) };
         //Constructor
-        internal ITTech(int id, string name) : base(id, name) { }
+        internal ITTech(int id, string name, castRole role) : base(id, name, role) { }
     }
 }
