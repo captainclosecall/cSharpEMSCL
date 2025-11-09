@@ -11,7 +11,7 @@ namespace EmployeeObj
         noRole,
         merchandise,
         foodAndBeverage,
-        HouseKeeping,
+        houseKeeping,
         photoPass,
         corporate
 

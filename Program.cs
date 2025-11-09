@@ -1,31 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using EmployeeObj;
+using cSharpEMSCL;
 ITTech it1 = new ITTech(-1, "jew",castRole.corporate);
 ITTech[] techList = { it1 };
 
 //Function to make sure user input integer value for switch menu select
-static int SwitchInputErrorCheck()
-{
-    bool inputValidiation = true;
-    while(inputValidiation)
-    {
-    string menuSelection = Console.ReadLine() ?? string.Empty;
-        int menuSelectionNum;
-        bool menuSelectionVerification = int.TryParse(menuSelection, out menuSelectionNum);
-
-        if(menuSelectionVerification)
-        {
-            return menuSelectionNum;
-            inputValidiation = false;
-        }
-        else
-        {
-            Console.WriteLine("Please select valid option.");
-            return 0;
-        }
-    }
-    return 0;
-}
 
 while (true)
 { 
@@ -61,7 +40,7 @@ while (true)
                     Console.WriteLine("5. Exit");
                     Console.WriteLine("Please select an option");
 
-                    int employeeMenuNum = SwitchInputErrorCheck();
+                    int employeeMenuNum = EMSutilies.SwitchInputErrorCheck();
 
                     switch (employeeMenuNum)
                     {
@@ -103,7 +82,7 @@ while (true)
                 //Console.WriteLine("");
                 Console.WriteLine("Please select an option");
 
-                int managerMenuNum = SwitchInputErrorCheck();
+                int managerMenuNum = EMSutilies.SwitchInputErrorCheck();
                 
 
                 switch (managerMenuNum)
@@ -148,7 +127,7 @@ while (true)
                 //Console.WriteLine("");
                 Console.WriteLine("Please select an option");
 
-                int leaderMenuNum = SwitchInputErrorCheck();
+                int leaderMenuNum = EMSutilies.SwitchInputErrorCheck();
 
                 switch (leaderMenuNum)
                 {
@@ -193,7 +172,7 @@ while (true)
                 //Console.WriteLine("");
                 Console.WriteLine("Please select an option");
 
-                int adminMenuNum = SwitchInputErrorCheck();
+                int adminMenuNum = EMSutilies.SwitchInputErrorCheck();
 
                 switch (adminMenuNum)
                 {
@@ -237,7 +216,7 @@ while (true)
                 Console.WriteLine("5. Exit");
                 Console.WriteLine("Please select an option");
 
-                int techMenuNum = SwitchInputErrorCheck();
+                int techMenuNum = EMSutilies.SwitchInputErrorCheck();
 
                 switch (techMenuNum)
                 {
