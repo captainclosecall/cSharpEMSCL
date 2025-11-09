@@ -15,6 +15,15 @@ namespace EmployeeObj
         internal Manager(int id, string name, castRole role) : base(id, name,role) { }
        
         //Methods
+        internal void ListEmployees<T>(IEnumerable<T> castList) where T : Employee
+        {
+            Console.WriteLine($"{typeof(T).Name}");
 
+            foreach(var member in castList)
+            {
+                int i = 1;
+                Console.WriteLine($"{i++}- Name:{member.mName} ID: {member.mId} Role: {member.jobTitle}");
+            }
+        }
     }
 }

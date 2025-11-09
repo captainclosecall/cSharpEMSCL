@@ -75,7 +75,8 @@ while (true)
                 Console.WriteLine("2. Clock in");
                 Console.WriteLine("3. Clock out");
                 Console.WriteLine("4. Check clock stats");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. List members");
+                Console.WriteLine("6. Exit");
                 //Console.WriteLine("");
                 Console.WriteLine("Please select an option");
 
@@ -97,6 +98,9 @@ while (true)
                         it1.managerList[i].CheckClockStats();
                         break;
                     case 5:
+                        it1.managerList[i].ListEmployees(it1.employeeList);
+                        break;
+                    case 6:
                         userExitCondition = false;
                         break;
                     default:
@@ -116,7 +120,8 @@ while (true)
                 Console.WriteLine("2. Clock in");
                 Console.WriteLine("3. Clock out");
                 Console.WriteLine("4. Check clock stats");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. List members");
+                Console.WriteLine("6. Exit");
                 //Console.WriteLine("");
                 Console.WriteLine("Please select an option");
 
@@ -138,6 +143,10 @@ while (true)
                         it1.leaderList[i].CheckClockStats();
                         break;
                     case 5:
+                        it1.leaderList[i].ListEmployees(it1.employeeList);
+                        it1.leaderList[i].ListEmployees(it1.managerList);
+                        break;
+                    case 6:
                         userExitCondition = false;
                         break;
                     default:
@@ -157,7 +166,9 @@ while (true)
                 Console.WriteLine("2. Clock in");
                 Console.WriteLine("3. Clock out");
                 Console.WriteLine("4. Check clock stats");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. List members");
+                Console.WriteLine("6. Exit");
+                //Console.WriteLine("");
                 Console.WriteLine("Please select an option");
 
                 string adminMenu = Console.ReadLine() ?? string.Empty;
@@ -178,6 +189,11 @@ while (true)
                         it1.adminList[i].CheckClockStats();
                         break;
                     case 5:
+                        it1.adminList[i].ListEmployees(it1.employeeList);
+                        it1.adminList[i].ListEmployees(it1.managerList);
+                        it1.adminList[i].ListEmployees(it1.leaderList);
+                        break;
+                    case 6:
                         userExitCondition = false;
                         break;
                     default:
@@ -218,6 +234,12 @@ while (true)
                         techList[i].CheckClockStats();
                         break;
                     case 5:
+                        techList[i].ListEmployees(it1.employeeList);
+                        techList[i].ListEmployees(it1.managerList);
+                        techList[i].ListEmployees(it1.leaderList);
+                        techList[i].ListEmployees(it1.adminList);
+                        break;
+                    case 6:
                         userExitCondition = false;
                         break;
                     default:
