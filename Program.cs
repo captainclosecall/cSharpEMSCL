@@ -22,7 +22,7 @@ while (true)
     if (validateInput || employeeInput.Length > 0)
     {
 
-        for (int i = 0; i < it1.employeeList.Length; i++)
+        for (int i = 0; i < it1.employeeList.Count; i++)
         {
             if (employeeNum == it1.employeeList[i].mId)
             {
@@ -66,7 +66,7 @@ while (true)
             }
         }
 
-        for (int i = 0; i < it1.managerList.Length; i++)
+        for (int i = 0; i < it1.managerList.Count; i++)
         {
             if (employeeNum == it1.managerList[i].mId)
             {
@@ -107,7 +107,7 @@ while (true)
             }
         }
 
-        for (int i = 0; i < it1.leaderList.Length; i++)
+        for (int i = 0; i < it1.leaderList.Count; i++)
         {
             if (employeeNum == it1.leaderList[i].mId)
             {
@@ -148,7 +148,7 @@ while (true)
             }
         }
 
-        for (int i = 0; i < it1.adminList.Length; i++)
+        for (int i = 0; i < it1.adminList.Count; i++)
         {
             if (employeeNum == it1.adminList[i].mId)
             {
