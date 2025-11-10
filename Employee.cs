@@ -21,7 +21,7 @@ namespace EmployeeObj
         //Fields
         internal int mId { get;private set; }
         internal string mName { get;private set; }
-        internal bool clockStatus { get; private set; }
+        internal bool mClockStatus { get; private set; }
         internal castRole mJobTitle { get; private set; }
         internal List<DateTime> clockInHistory = new List<DateTime> { };
         internal List<DateTime> clockOutHistory = new List<DateTime> { };
@@ -37,7 +37,7 @@ namespace EmployeeObj
         //Methods
         internal void CheckClockStatus()
         {
-            if(!clockStatus)
+            if(!mClockStatus)
             {
                 Console.WriteLine($"{mName} is clocked out.");
             }
@@ -49,10 +49,10 @@ namespace EmployeeObj
 
         internal void ClockIn()
         {
-            if(!clockStatus)
+            if(!mClockStatus)
             {
                 DateTime now = DateTime.Now;
-                clockStatus = true;
+                mClockStatus = true;
                 clockInHistory.Add(now);
                 Console.WriteLine($"{mName} has clocked in at {now:f}");
             }
@@ -64,10 +64,10 @@ namespace EmployeeObj
 
         internal void ClockOut()
         {
-            if(clockStatus)
+            if(mClockStatus)
             {
                 DateTime now = DateTime.Now;
-                clockStatus = false;
+                mClockStatus = false;
                 clockOutHistory.Add(now);
                 Console.WriteLine($"{mName} has clocked out at {now:f}");
             }
