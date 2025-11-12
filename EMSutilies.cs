@@ -22,16 +22,16 @@ namespace cSharpEMSCL
                 if (menuSelectionVerification)
                 {
                     return menuSelectionNum;
-                    inputValidiation = false;
-                }
-                else
-                {
-                    Console.WriteLine("Please select valid option.");
-                    return 0;
                 }
             }
             return 0;
         }
+
+        internal static void PrintInvalidInput()
+        {
+            Console.WriteLine("Please select a valid option.");
+        }
+
 
     }
 }

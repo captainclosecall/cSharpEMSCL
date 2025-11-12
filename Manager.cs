@@ -1,4 +1,5 @@
-﻿using System;
+﻿using cSharpEMSCL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,35 @@ namespace EmployeeObj
                 else
                 {
                     Console.WriteLine(" Clock status: Clocked out");
+                }
+            }
+        }
+
+        /*Trying to figure out how to write this with the least code repetition as possible*/
+        internal void ChangeClockStatusOfSubordinates<T>(IEnumerable<T> castList) where T : Employee
+        {
+            Console.Write("Enter employee ID of member you want to clock in:");
+
+            int employeeToClock = EMSutilies.SwitchInputErrorCheck();
+            
+            foreach(var member in castList)
+            {
+                if(employeeToClock == member.mId)
+                {
+                    member.CheckClockStatus();
+                    Console.Write("would you like to change the clock status?");
+                    Console.WriteLine("1. Yes");
+                    Console.WriteLine("2. Back to main menu");
+                    Console.Write("Select an option: ");
+
+                    int clockDecision = EMSutilies.SwitchInputErrorCheck();
+
+                    switch(clockDecision)
+                    {
+                        case 1:
+                            member.mClockStatus = !mClockStatus;
+                            break;
+                    }
                 }
             }
         }

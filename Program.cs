@@ -26,7 +26,6 @@ while (true)
         {
             if (employeeNum == it1.employeeList[i].mId)
             {
-
                 while (userExitCondition)
                 {
                     Console.WriteLine($"Welcome {it1.employeeList[i].mName}!");
@@ -57,7 +56,7 @@ while (true)
                             userExitCondition = false;
                             break;
                         default:
-                            //Console.WriteLine("Please select a valid option.");
+                            EMSutilies.PrintInvalidInput();
                             break;
                     }
                 }
@@ -82,7 +81,6 @@ while (true)
 
                     int managerMenuNum = EMSutilies.SwitchInputErrorCheck();
 
-
                     switch (managerMenuNum)
                     {
                         case 1:
@@ -101,10 +99,13 @@ while (true)
                             it1.managerList[i].ListEmployees(it1.employeeList);
                             break;
                         case 6:
+                            it1.managerList[i].ChangeClockStatusOfSubordinates(it1.employeeList);
+                            break;
+                        case 7:
                             userExitCondition = false;
                             break;
                         default:
-                            //Console.WriteLine("Please select a valid option.");
+                            EMSutilies.PrintInvalidInput();
                             break;
                     }
                 }
@@ -122,6 +123,7 @@ while (true)
                 Console.WriteLine("4. Check clock stats");
                 Console.WriteLine("5. List members");
                 Console.WriteLine("6. Exit");
+                //Console.WriteLine("");
                 //Console.WriteLine("");
                 Console.WriteLine("Please select an option");
 
@@ -151,7 +153,7 @@ while (true)
                             userExitCondition = false;
                             break;
                         default:
-                            //Console.WriteLine("Please select a valid option.");
+                            EMSutilies.PrintInvalidInput();
                             break;
                     }
                 }
@@ -203,7 +205,7 @@ while (true)
                             userExitCondition = false;
                             break;
                         default:
-                            //Console.WriteLine("Please select a valid option.");
+                            EMSutilies.PrintInvalidInput();
                             break;
                     }
                 }
@@ -252,7 +254,7 @@ while (true)
                             userExitCondition = false;
                             break;
                         default:
-                            //Console.WriteLine("Please select a valid option.");
+                            EMSutilies.PrintInvalidInput();
                             break;
                     }
                 }

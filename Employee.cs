@@ -21,7 +21,7 @@ namespace EmployeeObj
         //Fields
         internal int mId { get;private set; }
         internal string mName { get;private set; }
-        internal bool mClockStatus { get; private set; }
+        internal bool mClockStatus { get;set; }
         internal castRole mJobTitle { get; private set; }
         internal List<DateTime> clockInHistory = new List<DateTime> { };
         internal List<DateTime> clockOutHistory = new List<DateTime> { };
