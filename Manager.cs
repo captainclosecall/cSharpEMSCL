@@ -18,7 +18,7 @@ namespace EmployeeObj
         //Methods
         internal void ListEmployees<T>(IEnumerable<T> castList) where T : Employee
         {
-            Console.WriteLine($"{typeof(T).Name}");
+            Console.WriteLine($"{typeof(T).Name}:");
 
             foreach(var member in castList)
             {
@@ -36,28 +36,36 @@ namespace EmployeeObj
         }
 
         /*Trying to figure out how to write this with the least code repetition as possible*/
-        internal void ChangeClockStatusOfSubordinates<T>(IEnumerable<T> castList) where T : Employee
+        internal void ChangeClockStatusOfSubordinates<T>(IEnumerable<T> castList, int userInput,bool employeeFound) where T : Employee
         {
-            Console.Write("Enter employee ID of member you want to clock in:");
-
-            int employeeToClock = EMSutilies.SwitchInputErrorCheck();
-            
             foreach(var member in castList)
             {
-                if(employeeToClock == member.mId)
+                if(userInput == member.mId)
                 {
+                    employeeFound = false;
                     member.CheckClockStatus();
                     Console.Write("would you like to change the clock status?");
                     Console.WriteLine("1. Yes");
                     Console.WriteLine("2. Back to main menu");
                     Console.Write("Select an option: ");
 
-                    int clockDecision = EMSutilies.SwitchInputErrorCheck();
+                    int clockDecision = EMSutilities.SwitchInputErrorCheck();
 
                     switch(clockDecision)
                     {
                         case 1:
-                            member.mClockStatus = !mClockStatus;
+                            if(member.mClockStatus)
+                            {
+                                member.ClockOut();
+                            }
+                            else
+                            {
+                                member.ClockIn();
+                            }
+                                break;
+                        case 2:
+                            return;
+                        default:
                             break;
                     }
                 }

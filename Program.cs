@@ -36,7 +36,7 @@ while (true)
                     Console.WriteLine("5. Exit");
                     Console.WriteLine("Please select an option");
 
-                    int employeeMenuNum = EMSutilies.SwitchInputErrorCheck();
+                    int employeeMenuNum = EMSutilities.SwitchInputErrorCheck();
 
                     switch (employeeMenuNum)
                     {
@@ -56,7 +56,7 @@ while (true)
                             userExitCondition = false;
                             break;
                         default:
-                            EMSutilies.PrintInvalidInput();
+                            EMSutilities.PrintInvalidInput();
                             break;
                     }
                 }
@@ -75,11 +75,12 @@ while (true)
                     Console.WriteLine("3. Clock out");
                     Console.WriteLine("4. Check clock stats");
                     Console.WriteLine("5. List members");
-                    Console.WriteLine("6. Exit");
+                    Console.WriteLine("6. Clock in employee");
+                    Console.WriteLine("7. Exit");
                     //Console.WriteLine("");
                     Console.WriteLine("Please select an option");
 
-                    int managerMenuNum = EMSutilies.SwitchInputErrorCheck();
+                    int managerMenuNum = EMSutilities.SwitchInputErrorCheck();
 
                     switch (managerMenuNum)
                     {
@@ -99,13 +100,18 @@ while (true)
                             it1.managerList[i].ListEmployees(it1.employeeList);
                             break;
                         case 6:
-                            it1.managerList[i].ChangeClockStatusOfSubordinates(it1.employeeList);
+                            bool employeeLocated = true;
+                            it1.managerList[i].ListEmployees(it1.employeeList);
+                            int userInput = EMSutilities.EmployeeIdInput();
+                            it1.managerList[i].ChangeClockStatusOfSubordinates(it1.employeeList,userInput,employeeLocated);
+
+                            EMSutilities.employeeIdNotFound(employeeLocated);
                             break;
                         case 7:
                             userExitCondition = false;
                             break;
                         default:
-                            EMSutilies.PrintInvalidInput();
+                            EMSutilities.PrintInvalidInput();
                             break;
                     }
                 }
@@ -116,21 +122,21 @@ while (true)
         {
             if (employeeNum == it1.leaderList[i].mId)
             {
-                Console.WriteLine($"Welcome {it1.leaderList[i].mName}!");
-                Console.WriteLine("1. Check clock status");
-                Console.WriteLine("2. Clock in");
-                Console.WriteLine("3. Clock out");
-                Console.WriteLine("4. Check clock stats");
-                Console.WriteLine("5. List members");
-                Console.WriteLine("6. Exit");
-                //Console.WriteLine("");
-                //Console.WriteLine("");
-                Console.WriteLine("Please select an option");
-
-                int leaderMenuNum = EMSutilies.SwitchInputErrorCheck();
-
                 while (userExitCondition)
                 {
+                    Console.WriteLine($"Welcome {it1.leaderList[i].mName}!");
+                    Console.WriteLine("1. Check clock status");
+                    Console.WriteLine("2. Clock in");
+                    Console.WriteLine("3. Clock out");
+                    Console.WriteLine("4. Check clock stats");
+                    Console.WriteLine("5. List members");
+                    Console.WriteLine("6. Clock in employee");
+                    Console.WriteLine("7. Exit");
+                    //Console.WriteLine("");
+                    Console.WriteLine("Please select an option");
+
+                    int leaderMenuNum = EMSutilities.SwitchInputErrorCheck();
+
                     switch (leaderMenuNum)
                     {
                         case 1:
@@ -150,10 +156,21 @@ while (true)
                             it1.leaderList[i].ListEmployees(it1.managerList);
                             break;
                         case 6:
+                            bool employeeLocated = true;
+                            it1.leaderList[i].ListEmployees(it1.employeeList);
+                            it1.leaderList[i].ListEmployees(it1.managerList);
+
+                            int userInput = EMSutilities.EmployeeIdInput();
+                            it1.leaderList[i].ChangeClockStatusOfSubordinates(it1.employeeList, userInput, employeeLocated);
+                            it1.leaderList[i].ChangeClockStatusOfSubordinates(it1.managerList, userInput, employeeLocated);
+
+                            EMSutilities.employeeIdNotFound(employeeLocated);
+                            break;
+                        case 7:
                             userExitCondition = false;
                             break;
                         default:
-                            EMSutilies.PrintInvalidInput();
+                            EMSutilities.PrintInvalidInput();
                             break;
                     }
                 }
@@ -177,7 +194,7 @@ while (true)
                     Console.WriteLine("Please select an option");
                     //Console.WriteLine("");
 
-                    int adminMenuNum = EMSutilies.SwitchInputErrorCheck();
+                    int adminMenuNum = EMSutilities.SwitchInputErrorCheck();
 
                     switch (adminMenuNum)
                     {
@@ -205,7 +222,7 @@ while (true)
                             userExitCondition = false;
                             break;
                         default:
-                            EMSutilies.PrintInvalidInput();
+                            EMSutilities.PrintInvalidInput();
                             break;
                     }
                 }
@@ -228,7 +245,7 @@ while (true)
                     Console.WriteLine("Please select an option");
                     //Console.WriteLine("");
 
-                    int techMenuNum = EMSutilies.SwitchInputErrorCheck();
+                    int techMenuNum = EMSutilities.SwitchInputErrorCheck();
 
                     switch (techMenuNum)
                     {
@@ -254,7 +271,7 @@ while (true)
                             userExitCondition = false;
                             break;
                         default:
-                            EMSutilies.PrintInvalidInput();
+                            EMSutilities.PrintInvalidInput();
                             break;
                     }
                 }

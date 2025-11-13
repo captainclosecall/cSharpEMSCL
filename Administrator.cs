@@ -45,7 +45,7 @@ namespace EmployeeObj
                 Console.WriteLine("3. HousePerson");
                 Console.WriteLine("4. Corporate");
 
-                int jobSelectionNum = EMSutilies.SwitchInputErrorCheck();
+                int jobSelectionNum = EMSutilities.SwitchInputErrorCheck();
               
                     switch (jobSelectionNum)
                     {
@@ -79,7 +79,7 @@ namespace EmployeeObj
                 Console.WriteLine($"Please select {castName}'s rank:");
 
 
-                int castRankNum = EMSutilies.SwitchInputErrorCheck();
+                int castRankNum = EMSutilities.SwitchInputErrorCheck();
 
                     switch (castRankNum)
                     {

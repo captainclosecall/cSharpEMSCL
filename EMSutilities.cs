@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace cSharpEMSCL
 {
-    internal struct EMSutilies
+    internal struct EMSutilities
     {
 
         //Function to make sure user input integer value for switch menu select
@@ -32,6 +32,22 @@ namespace cSharpEMSCL
             Console.WriteLine("Please select a valid option.");
         }
 
+        internal static int EmployeeIdInput()
+        {
+            Console.Write("Enter employee ID:");
 
+            int userInput = EMSutilities.SwitchInputErrorCheck();
+
+            return userInput;
+        }
+
+        //If you want this method to print bool need to be true
+        internal static void employeeIdNotFound(bool idVerification)
+        {
+            if (idVerification)
+            {
+                Console.WriteLine("No employee located by that user Id.");
+            }
+        }
     }
 }
