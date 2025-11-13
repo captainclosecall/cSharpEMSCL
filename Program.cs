@@ -190,7 +190,8 @@ while (true)
                     Console.WriteLine("4. Check clock stats");
                     Console.WriteLine("5. List members");
                     Console.WriteLine("6. Create members");
-                    Console.WriteLine("7. Exit");
+                    Console.WriteLine("7. Clock in employee");
+                    Console.WriteLine("8. Exit");
                     Console.WriteLine("Please select an option");
                     //Console.WriteLine("");
 
@@ -219,6 +220,19 @@ while (true)
                             it1.adminList[i].CreateCast(ref it1.employeeList, ref it1.managerList,ref it1.leaderList);
                             break;
                         case 7:
+                            bool employeeLocated = true;
+                            it1.adminList[i].ListEmployees(it1.employeeList);
+                            it1.adminList[i].ListEmployees(it1.managerList);
+                            it1.adminList[i].ListEmployees(it1.leaderList);
+
+                            int userInput = EMSutilities.EmployeeIdInput();
+                            it1.adminList[i].ChangeClockStatusOfSubordinates(it1.employeeList, userInput, employeeLocated);
+                            it1.adminList[i].ChangeClockStatusOfSubordinates(it1.managerList, userInput, employeeLocated);
+                            it1.adminList[i].ChangeClockStatusOfSubordinates(it1.leaderList, userInput, employeeLocated);
+
+                            EMSutilities.employeeIdNotFound(employeeLocated);
+                            break;
+                        case 8:
                             userExitCondition = false;
                             break;
                         default:
@@ -241,7 +255,8 @@ while (true)
                     Console.WriteLine("3. Clock out");
                     Console.WriteLine("4. Check clock stats");
                     Console.WriteLine("5. List members");
-                    Console.WriteLine("6. Exit");
+                    Console.WriteLine("6. Clock in employee");
+                    Console.WriteLine("7. Exit");
                     Console.WriteLine("Please select an option");
                     //Console.WriteLine("");
 
@@ -268,6 +283,21 @@ while (true)
                             techList[i].ListEmployees(it1.adminList);
                             break;
                         case 6:
+                            bool employeeLocated = true;
+                            techList[i].ListEmployees(it1.employeeList);
+                            techList[i].ListEmployees(it1.managerList);
+                            techList[i].ListEmployees(it1.leaderList);
+                            techList[i].ListEmployees(it1.adminList);
+
+                            int userInput = EMSutilities.EmployeeIdInput();
+                            techList[i].ChangeClockStatusOfSubordinates(it1.employeeList, userInput, employeeLocated);
+                            techList[i].ChangeClockStatusOfSubordinates(it1.managerList, userInput, employeeLocated);
+                            techList[i].ChangeClockStatusOfSubordinates(it1.leaderList, userInput, employeeLocated);
+                            techList[i].ChangeClockStatusOfSubordinates(it1.adminList, userInput, employeeLocated);
+
+                            EMSutilities.employeeIdNotFound(employeeLocated);
+                            break;
+                        case 7:
                             userExitCondition = false;
                             break;
                         default:
