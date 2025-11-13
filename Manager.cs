@@ -23,7 +23,7 @@ namespace EmployeeObj
             foreach(var member in castList)
             {
                 int i = 1;
-                Console.Write($"{i++}- Name: {member.mName} ID: {member.mId} Role: {member.mJobTitle}");
+                Console.Write($"{i++}- Name: {member.mName} |ID: {member.mId} Role: |{member.mJobTitle}|");
                 if(member.mClockStatus)
                 {
                     Console.WriteLine(" Clock status: Clocked in");
@@ -36,40 +36,45 @@ namespace EmployeeObj
         }
 
         /*Trying to figure out how to write this with the least code repetition as possible*/
-        internal void ChangeClockStatusOfSubordinates<T>(IEnumerable<T> castList, int userInput,bool employeeFound) where T : Employee
+        internal bool ChangeClockStatusOfSubordinates<T>(IEnumerable<T> castList, int userInput,bool employeeFound) where T : Employee
         {
             foreach(var member in castList)
             {
                 if(userInput == member.mId)
                 {
-                    employeeFound = false;
-                    member.CheckClockStatus();
-                    Console.Write("would you like to change the clock status?");
-                    Console.WriteLine("1. Yes");
-                    Console.WriteLine("2. Back to main menu");
-                    Console.Write("Select an option: ");
-
-                    int clockDecision = EMSutilities.SwitchInputErrorCheck();
-
-                    switch(clockDecision)
+                    while (employeeFound)
                     {
-                        case 1:
-                            if(member.mClockStatus)
-                            {
-                                member.ClockOut();
-                            }
-                            else
-                            {
-                                member.ClockIn();
-                            }
+                        member.CheckClockStatus();
+                        Console.WriteLine("would you like to change the clock status?");
+                        Console.WriteLine("1. Yes");
+                        Console.WriteLine("2. Back to main menu");
+                        Console.Write("Select an option: ");
+
+                        int clockDecision = EMSutilities.SwitchInputErrorCheck();
+
+                        switch (clockDecision)
+                        {
+                            case 1:
+                                if (member.mClockStatus)
+                                {
+                                    member.ClockOut();
+                                }
+                                else
+                                {
+                                    member.ClockIn();
+                                }
+                                return employeeFound = false;
+                            //break;
+                            case 2:
+                                return employeeFound = false;
+                            default:
+                                EMSutilities.PrintInvalidInput();
                                 break;
-                        case 2:
-                            return;
-                        default:
-                            break;
+                        }
                     }
                 }
             }
+            return employeeFound = true;
         }
     }
 }
