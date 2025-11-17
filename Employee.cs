@@ -16,6 +16,8 @@ namespace EmployeeObj
         corporate
 
     }
+    /*Add a list that allows the object to keep track if their role changed and when
+      Add a list that keep tracks when a type changes and when*/
     internal class Employee
     {
         //Fields

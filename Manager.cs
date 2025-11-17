@@ -36,12 +36,14 @@ namespace EmployeeObj
         }
 
         /*Trying to figure out how to write this with the least code repetition as possible*/
-        internal bool ChangeClockStatusOfSubordinates<T>(IEnumerable<T> castList, int userInput,bool employeeFound) where T : Employee
+        internal bool ChangeClockStatusOfSubordinates<T>(IEnumerable<T> castList, int userInput) where T : Employee
         {
+            //add mechanism that tracks who clocked in who. 
             foreach(var member in castList)
             {
                 if(userInput == member.mId)
                 {
+                    bool employeeFound = true;
                     while (employeeFound)
                     {
                         member.CheckClockStatus();
@@ -64,7 +66,6 @@ namespace EmployeeObj
                                     member.ClockIn();
                                 }
                                 return employeeFound = false;
-                            //break;
                             case 2:
                                 return employeeFound = false;
                             default:
@@ -74,7 +75,7 @@ namespace EmployeeObj
                     }
                 }
             }
-            return employeeFound = true;
+            return true;
         }
     }
 }

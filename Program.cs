@@ -5,7 +5,8 @@ ITTech it1 = new ITTech(-2, "jew",castRole.corporate);
 ITTech[] techList = { it1 };
 
 while (true)
-{ 
+{
+    Console.WriteLine(it1.GetType());
     bool userExitCondition = true;
     Console.Write("Enter Employee ID: ");
 
@@ -104,7 +105,7 @@ while (true)
                             bool employeeLocated = true;
                             it1.managerList[i].ListEmployees(it1.employeeList);
                             int userInput = EMSutilities.EmployeeIdInput();
-                            it1.managerList[i].ChangeClockStatusOfSubordinates(it1.employeeList,userInput,employeeLocated);
+                            employeeLocated = it1.managerList[i].ChangeClockStatusOfSubordinates(it1.employeeList,userInput);
 
                             EMSutilities.employeeIdNotFound(employeeLocated);
                             break;
@@ -162,8 +163,11 @@ while (true)
                             it1.leaderList[i].ListEmployees(it1.managerList);
 
                             int userInput = EMSutilities.EmployeeIdInput();
-                            employeeLocated = it1.leaderList[i].ChangeClockStatusOfSubordinates(it1.employeeList, userInput, employeeLocated);
-                            employeeLocated = it1.leaderList[i].ChangeClockStatusOfSubordinates(it1.managerList, userInput, employeeLocated);
+                            employeeLocated = it1.leaderList[i].ChangeClockStatusOfSubordinates(it1.employeeList, userInput);
+                            if (employeeLocated)
+                            {
+                                employeeLocated = it1.leaderList[i].ChangeClockStatusOfSubordinates(it1.managerList, userInput);
+                            }
 
                             EMSutilities.employeeIdNotFound(employeeLocated);
                             break;
@@ -192,7 +196,8 @@ while (true)
                     Console.WriteLine("5. List members");
                     Console.WriteLine("6. Create members");
                     Console.WriteLine("7. Clock in employee");
-                    Console.WriteLine("8. Exit");
+                    Console.WriteLine("8. Remove cast");
+                    Console.WriteLine("9. Exit");
                     Console.WriteLine("Please select an option");
                     //Console.WriteLine("");
 
@@ -216,9 +221,10 @@ while (true)
                             it1.adminList[i].ListEmployees(it1.employeeList);
                             it1.adminList[i].ListEmployees(it1.managerList);
                             it1.adminList[i].ListEmployees(it1.leaderList);
+                            it1.adminList[i].ListEmployees(it1.removedList);
                             break;
                         case 6:
-                            it1.adminList[i].CreateCast(ref it1.employeeList, ref it1.managerList,ref it1.leaderList);
+                            it1.adminList[i].CreateCast(ref it1.employeeList, ref it1.managerList,ref it1.leaderList, ref it1.removedList);
                             break;
                         case 7:
                             bool employeeLocated = true;
@@ -227,13 +233,33 @@ while (true)
                             it1.adminList[i].ListEmployees(it1.leaderList);
 
                             int userInput = EMSutilities.EmployeeIdInput();
-                            employeeLocated = it1.adminList[i].ChangeClockStatusOfSubordinates(it1.employeeList, userInput, employeeLocated);
-                            employeeLocated = it1.adminList[i].ChangeClockStatusOfSubordinates(it1.managerList, userInput, employeeLocated);
-                            employeeLocated = it1.adminList[i].ChangeClockStatusOfSubordinates(it1.leaderList, userInput, employeeLocated);
-
+                            employeeLocated = it1.adminList[i].ChangeClockStatusOfSubordinates(it1.employeeList, userInput);
+                            if (employeeLocated)
+                            {
+                                employeeLocated = it1.adminList[i].ChangeClockStatusOfSubordinates(it1.managerList, userInput);
+                            }
+                            if (employeeLocated)
+                            {
+                                employeeLocated = it1.adminList[i].ChangeClockStatusOfSubordinates(it1.leaderList, userInput);
+                            }
                             EMSutilities.employeeIdNotFound(employeeLocated);
                             break;
-                        case 8:
+                            case 8:
+                            bool userFound = true;
+                            int userSearch = EMSutilities.EmployeeIdInput();
+                            userFound = it1.adminList[i].RemoveCast(it1.employeeList,userSearch,ref it1.removedList);
+                            if (userFound)
+                            {
+                                userFound = it1.adminList[i].RemoveCast(it1.managerList, userSearch, ref it1.removedList);
+                            }
+                            if (userFound)
+                            {
+                                userFound = it1.adminList[i].RemoveCast(it1.leaderList, userSearch, ref it1.removedList);
+                            }
+
+                            EMSutilities.employeeIdNotFound(userFound);
+                            break;
+                        case 9:
                             userExitCondition = false;
                             break;
                         default:
@@ -256,7 +282,7 @@ while (true)
                     Console.WriteLine("3. Clock out");
                     Console.WriteLine("4. Check clock stats");
                     Console.WriteLine("5. List members");
-                    Console.WriteLine("6. Clock in employee");
+                    Console.WriteLine("6. Remove cast");
                     Console.WriteLine("7. Exit");
                     Console.WriteLine("Please select an option");
                     //Console.WriteLine("");
@@ -282,21 +308,26 @@ while (true)
                             techList[i].ListEmployees(it1.managerList);
                             techList[i].ListEmployees(it1.leaderList);
                             techList[i].ListEmployees(it1.adminList);
+                            techList[i].ListEmployees(it1.removedList);
                             break;
                         case 6:
-                            bool employeeLocated = true;
-                            techList[i].ListEmployees(it1.employeeList);
-                            techList[i].ListEmployees(it1.managerList);
-                            techList[i].ListEmployees(it1.leaderList);
-                            techList[i].ListEmployees(it1.adminList);
+                            bool userFound = true;
+                            int userSearch = EMSutilities.EmployeeIdInput();
+                            userFound = techList[i].RemoveCast(it1.employeeList, userSearch, ref it1.removedList);
+                            if (userFound)
+                            {
+                                userFound = techList[i].RemoveCast(it1.managerList, userSearch, ref it1.removedList);
+                            }
+                            if (userFound)
+                            {
+                                userFound = techList[i].RemoveCast(it1.leaderList, userSearch, ref it1.removedList);
+                            }
+                            if (userFound)
+                            {
+                                userFound = techList[i].RemoveCast(it1.adminList, userSearch, ref it1.removedList);
+                            }
 
-                            int userInput = EMSutilities.EmployeeIdInput();
-                            employeeLocated = techList[i].ChangeClockStatusOfSubordinates(it1.employeeList, userInput, employeeLocated);
-                            employeeLocated = techList[i].ChangeClockStatusOfSubordinates(it1.managerList, userInput, employeeLocated);
-                            employeeLocated = techList[i].ChangeClockStatusOfSubordinates(it1.leaderList, userInput, employeeLocated);
-                            employeeLocated = techList[i].ChangeClockStatusOfSubordinates(it1.adminList, userInput, employeeLocated);
-
-                            EMSutilities.employeeIdNotFound(employeeLocated);
+                            EMSutilities.employeeIdNotFound(userFound);
                             break;
                         case 7:
                             userExitCondition = false;

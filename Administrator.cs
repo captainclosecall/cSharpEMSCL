@@ -10,16 +10,17 @@ namespace EmployeeObj
     internal class Administrator : Leader
     {
         //Fields
-        internal List<Leader> leaderList = new() {new Leader(3, "Jayleen",castRole.merchandise) };
+        internal List<Leader> leaderList = new() { new Leader(3, "Jayleen", castRole.merchandise) };
+        internal List<RemovedEmployee> removedList = new() { new RemovedEmployee(3, "Me",castRole.merchandise) };
         //Constructor
-        internal Administrator(int id,string name, castRole role) : base(id,name,role) { }
+        internal Administrator(int id, string name, castRole role) : base(id, name, role) { }
 
         //Methods
-        public void CreateCast(ref List<Employee> emp, ref List<Manager> mg, ref List<Leader> lead)
+        public void CreateCast(ref List<Employee> emp, ref List<Manager> mg, ref List<Leader> lead, ref List<RemovedEmployee> removed)
         {
             bool castCreationValidation = true;
             castRole roleAssignment = castRole.noRole;
-            int idAssign = emp.Count + mg.Count + lead.Count +1;
+            int idAssign = emp.Count + mg.Count + lead.Count + removed.Count + 1;
             string castName = "";
 
             while (castCreationValidation)
@@ -46,29 +47,29 @@ namespace EmployeeObj
                 Console.WriteLine("4. Corporate");
 
                 int jobSelectionNum = EMSutilities.SwitchInputErrorCheck();
-              
-                    switch (jobSelectionNum)
-                    {
-                        case 1:
-                            castCreationValidation = false;
-                            roleAssignment = castRole.merchandise;
-                            break;
-                        case 2:
-                            castCreationValidation = false;
-                            roleAssignment = castRole.foodAndBeverage;
-                            break;
-                        case 3:
-                            castCreationValidation = false;
-                            roleAssignment = castRole.houseKeeping;
-                            break;
-                        case 4:
-                            castCreationValidation = false;
-                            roleAssignment = castRole.corporate;
-                            break;
-                        default:
-                            Console.WriteLine("Please Select a valid option.");
-                            break;
-                    }
+
+                switch (jobSelectionNum)
+                {
+                    case 1:
+                        castCreationValidation = false;
+                        roleAssignment = castRole.merchandise;
+                        break;
+                    case 2:
+                        castCreationValidation = false;
+                        roleAssignment = castRole.foodAndBeverage;
+                        break;
+                    case 3:
+                        castCreationValidation = false;
+                        roleAssignment = castRole.houseKeeping;
+                        break;
+                    case 4:
+                        castCreationValidation = false;
+                        roleAssignment = castRole.corporate;
+                        break;
+                    default:
+                        Console.WriteLine("Please Select a valid option.");
+                        break;
+                }
             }
             castCreationValidation = true;
             while (castCreationValidation)
@@ -81,35 +82,63 @@ namespace EmployeeObj
 
                 int castRankNum = EMSutilities.SwitchInputErrorCheck();
 
-                    switch (castRankNum)
-                    {
-                        case 1:
-                            emp.Add(new Employee(idAssign, castName, roleAssignment));
-                            castCreationValidation = false;
-                            break;
-                        case 2:
-                            mg.Add(new Manager(idAssign, castName, roleAssignment));
-                            castCreationValidation = false;
-                            break;
-                        case 3:
-                            lead.Add(new Leader(idAssign, castName, roleAssignment));
-                            castCreationValidation = false;
-                            break;
+                switch (castRankNum)
+                {
+                    case 1:
+                        emp.Add(new Employee(idAssign, castName, roleAssignment));
+                        castCreationValidation = false;
+                        break;
+                    case 2:
+                        mg.Add(new Manager(idAssign, castName, roleAssignment));
+                        castCreationValidation = false;
+                        break;
+                    case 3:
+                        lead.Add(new Leader(idAssign, castName, roleAssignment));
+                        castCreationValidation = false;
+                        break;
                     default:
                         Console.WriteLine("Please select a valid option.");
                         break;
-                    }
+                }
             }
         }
-
-        public void ListAllEmployee<T>(IEnumerable<T> castList) where T : Employee
+        //
+        public bool RemoveCast<T>( ICollection<T> employeeList,int userSearch, ref List<RemovedEmployee> copyObjectToCollection) where T : Employee
         {
-            Console.WriteLine($"{typeof(T).Name}s:");
-            int i = 1;
-            foreach (var member in castList)
+            foreach(var member in employeeList)
             {
-                Console.WriteLine($"{i++}- Name: {member.mName} ID: {member.mId} Role: {member.mJobTitle}");
+                if(userSearch == member.mId)
+                {
+                    bool checkCorrectInput = true;
+                    while (checkCorrectInput)
+                    {
+
+                        Console.WriteLine($"You selected {member.mName} would you like to remove them?");
+                        Console.WriteLine("1. Yes");
+                        Console.WriteLine("2. Back to main menu");
+
+                        int userSelect = EMSutilities.SwitchInputErrorCheck();
+
+                        switch (userSelect)
+                        {
+                            case 1:
+                                copyObjectToCollection.Add(new RemovedEmployee(member.mId, member.mName, member.mJobTitle));
+                                employeeList.Remove(member);
+                                checkCorrectInput = false;
+                                return false;
+                            case 2:
+                                checkCorrectInput = false;
+                                return false;
+                            default:
+                                Console.WriteLine("please select a valid option");
+                                break;
+                        }
+                    }
+                }
+                else
+                { return true; }
             }
+            return true;
         }
     }
 }
